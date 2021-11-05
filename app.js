@@ -92,3 +92,21 @@ async function tvMazeFunc(){
   } 
 }
 tvMazeFunc();
+
+// BONUS...
+// 5. Use the Poke API (https://pokeapi.co/) to display an image of Pikachu below the fourth div on the webpage
+const image = document.createElement(`img`);
+const body = document.querySelector(`body`);
+
+axios.get(`https://pokeapi.co/api/v2/pokemon/pikachu`)
+.then (res => {
+  console.log(`Bonus Example was successful`);
+  console.log(res);
+  console.log(res.data.sprites.front_default);
+  image.src = res.data.sprites.front_default;
+  body.append(image);
+})
+.catch(err => {
+  console.log(`Bonus Example was NOT Successful`);
+  console.log(err);
+});
