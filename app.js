@@ -10,6 +10,8 @@ first.append(p2);
 // 1a. Change the string of JSON into JavaScript (It will be a JS object) and set the new value to a const variable called jokeJS1 (HINT: Use JSON.parse())
 const JSONString = `{"id":18,"type":"programming","setup":"Why did the programmer quit his job?","punchline":"Because he didn't get arrays."}`;
 const jokeJS1 = JSON.parse(JSONString);
+// OR (ALL  ON ONE LINE)
+// const jokeJS1 = JSON.parse(`{"id":18,"type":"programming","setup":"Why did the programmer quit his job?","punchline":"Because he didn't get arrays."}`);
 console.log(jokeJS1);
 
 // 1b. Access the value for the "setup" key in the jokeJS1 object and set it to the inner text for the p1 variable/element (If done correctly the setup for the joke should display on the webpage)
@@ -78,6 +80,18 @@ fourth.append(p7);
 
 // 4a. Using Axios, Async/await, and the "Episode by Number" endpoint/URL display the name of the final episode in season two of "The Mandalorian" TV show as the inner text for the p7 variable/element. Also, use tvMazeFunc for the name of the async function you create. If done correctly the name of the episode should display on the webpage. (NOTE: Don't forget to run the tvMazeFunc function)(Hint: id is 38963).
 
+// OR with variables to build out the full endpoint
+// const baseURL = `https://api.tvmaze.com`;
+// const id = `38963`;
+// const endpoint = `/shows/${id}/episodebynumber?`;
+// const season = `2`;
+// const number = `8`;
+// const queryString = `season=${season}&number=${number}`;
+// const fullEndpoint = baseURL + endpoint + queryString;
+// 4b. Finally, include try and catch inside the tvMazeFunc function. For the catch, just have the "rejected" value/error returned from the axios GET request display in the console (NOTE: You will need a console log for this. Also, you will need to create a parameter for the catch. The parameter will hold the "rejected" value/error returned from the axios GET request).
+
+// Example using a arrow function expression (NOTE: A Declaration function can also be used here)
+// tvMazeFunc = async () => {
 async function tvMazeFunc(){
   try {
     const mandalorian = await axios.get(`https://api.tvmaze.com/shows/38963/episodebynumber?season=2&number=8`);
@@ -85,7 +99,6 @@ async function tvMazeFunc(){
     console.log(mandalorian);
     p7.innerText = mandalorian.data.name;
 
-    // 4b. Finally, include try and catch inside the tvMazeFunc function. For the catch, just have the "rejected" value/error returned from the axios GET request display in the console (NOTE: You will need a console log for this. Also, you will need to create a parameter for the catch. The parameter will hold the "rejected" value/error returned from the axios GET request).
   } catch (err) {
     // console.log(`Example 4 was NOT Successful`);
     console.log(err);
